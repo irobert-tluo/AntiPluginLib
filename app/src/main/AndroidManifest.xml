@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.panw.lab.blackhatdemo">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name="com.panw.lab.antipluginsdk.AntiCheckCases.AntiCheckMainService"
+            android:enabled="true"
+            android:exported="true">
+            <action android:name="com.android.broadcast.ANTI_STATIC_STICKY" />
+        </service>
+
+        <service
+            android:name="com.panw.lab.antipluginsdk.AntiCheckCases.Dummy.DummyRemoteService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remote" />
+        <service
+            android:name="com.panw.lab.antipluginsdk.AntiCheckCases.Dummy.DummyService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <receiver
+            android:name="com.panw.lab.antipluginsdk.AntiCheckCases.Dummy.DummyReceiver"
+            android:enabled="false"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.android.broadcast.ANTI_STATIC" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
