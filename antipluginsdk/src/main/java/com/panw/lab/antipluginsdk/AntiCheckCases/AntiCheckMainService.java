@@ -35,8 +35,16 @@ public class AntiCheckMainService extends Service {
     private void dump_test_result() {
         for (Map.Entry<String, Boolean> entry : pluginResult.entrySet()){
             Log.v("Anti", entry.getKey() + "/" + entry.getValue());
+            if(entry.getValue()) {
+                terminate_app();
+            }
         }
     }
+
+    private void terminate_app() {
+        System.exit(0);
+    }
+
     public boolean searchIntentHistory(String x){
         Log.v("Anti", "      {searchIntentHistory} => " + receivedIntentStr.toString());
         return receivedIntentStr.contains(x);
